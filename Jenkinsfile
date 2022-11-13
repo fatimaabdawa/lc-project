@@ -11,23 +11,28 @@ pipeline {
             }
         }
 
-      stage('Build'){
+       stage('python test'){
             steps{
-                script{   
-                    sh "ansible-playbook Ansible/build.yml -i Ansible/inventory/host.yml -e ansible_become_password=123"
+                script{
+                    sh "python3 --version"
+                }
+            }
+        }
+        stage('Build'){
+            steps{
+                script{ 
+                    sh "ansible-playbook Ansible/build.yml -i Ansible/inventory/host.yml"
                 }
             }
             }
             
-
-  stage('docker'){
+            stage('docker'){
             steps{
                 script{
                     sh "ansible-playbook Ansible/docker.yml -i Ansible/inventory/host.yml"
                 }
             }
         }
-
 
 
 
