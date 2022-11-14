@@ -29,7 +29,7 @@ pipeline {
             stage('docker'){
             steps{
                 script{
-                    sh "python3 --version"
+                    sh "ansible-playbook Ansible/build.yml -i Ansible/inventory/host.yml"
                 }
             }
         }
