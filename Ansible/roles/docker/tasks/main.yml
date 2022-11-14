@@ -1,19 +1,18 @@
-# tasks, file for docker
-
-- name: create image docker
-  docker image:
-    name: devops
-    build:
-     path: /var/lib/jenkins/workspace/LC-PROJECT
-     pull: no
-    source: build
-    state: pCeseot
-    force source: true
-- name: run container docker
-  docker container:
-    name: myapp_container
-    image: devons…latest
-    state: started
-    recreate: true
-    ports:
-    - "4200 :80"
+# tasks file for docker
+        - name: create image docker
+          docker_image:
+            name: appfront
+            build:
+             path: /var/lib/jenkins/workspace/LC-PROJECT
+             pull: no
+            source: build
+            state: present
+            force_source: true
+        - name: run container docker
+          docker_container:
+            name: myapp_container
+            image: appfront:latest
+            state: started
+            recreate: true
+            ports:
+             - "4200:80"
