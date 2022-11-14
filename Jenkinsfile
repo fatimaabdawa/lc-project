@@ -29,7 +29,7 @@ pipeline {
             stage('docker'){
             steps{
                 script{
-                    sh "ansible-playbook Ansible/docker.yml -i Ansible/inventory/host.yml"
+                    sh "python3 --version"
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
   stage('docker-registry'){
             steps{
                 script{
-                    sh "ansible-playbook Ansible/docker-registry.yml -i Ansible/inventory/host.yml"
+                   sh "python3 --version"
                 }
             }
         }
